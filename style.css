@@ -1,0 +1,5 @@
+body {
+  background-color: hsl(78 9.2% 81.3%);
+  display: flex;
+  flex-direction: column;
+}
