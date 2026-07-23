@@ -10,4 +10,20 @@
  *   - have the colours be random color values for each square; plus darkening
  */
 
+/* Create Grid of Squares */
 const container = document.querySelector(".container");
+
+function createGrid(gridSquares) {
+  for (let i = 0; i < gridSquares; i++) {
+    const rowSquare = document.createElement("div");
+    rowSquare.className = "rowSquare";
+    for (let j = 0; j < gridSquares; j++) {
+      const colSquare = document.createElement("div");
+      colSquare.className = "colSquare";
+      rowSquare.appendChild(colSquare);
+    }
+    container.appendChild(rowSquare);
+  }
+}
+
+createGrid(8);
