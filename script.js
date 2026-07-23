@@ -13,16 +13,20 @@
 /* Create Grid of Squares */
 const container = document.querySelector(".container");
 
-function createGrid(gridSquares) {
-  for (let i = 0; i < gridSquares; i++) {
-    const rowSquare = document.createElement("div");
-    rowSquare.className = "rowSquare";
-    for (let j = 0; j < gridSquares; j++) {
-      const colSquare = document.createElement("div");
-      colSquare.className = "colSquare";
-      rowSquare.appendChild(colSquare);
+function createGrid(gridSquares, maximum = 100) {
+  if (gridSquares <= maximum) {
+    for (let i = 0; i < gridSquares; i++) {
+      const rowSquare = document.createElement("div");
+      rowSquare.className = "rowSquare";
+      for (let j = 0; j < gridSquares; j++) {
+        const colSquare = document.createElement("div");
+        colSquare.className = "colSquare";
+        rowSquare.appendChild(colSquare);
+      }
+      container.appendChild(rowSquare);
     }
-    container.appendChild(rowSquare);
+  } else {
+    alert(`Too many squares, please enter a number less than ${maximum}`);
   }
 }
 
