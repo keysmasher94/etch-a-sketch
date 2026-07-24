@@ -33,16 +33,16 @@ function createGrid(gridSquares, maximum = 100) {
     }
   } else if (gridSquares > maximum) {
     alert(`Too many squares, please enter a number less than ${maximum}`);
-  } else {
-    // FIXME:
-    alert("I need to figure out how to clear the board");
   }
 }
 
 /* Choose grid size and create grid */
 const btn = document.querySelector("button");
 btn.addEventListener("click", () => {
-  // TODO: clear screen of pre-existing grids
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+  existing = false;
   let maximum = prompt("How many squares would you like?");
   createGrid(maximum);
 });
