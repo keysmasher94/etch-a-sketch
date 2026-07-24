@@ -25,10 +25,9 @@ function createGrid(gridSquares, maximum = 100) {
         let enterEvent = 0;
         colSquare.addEventListener("mouseenter", (e) => {
           if (enterEvent < 10) {
-            enterEvent++;
+            enterEvent += 2;
           }
           colSquare.style.backgroundColor = randomColor(enterEvent);
-          console.log(enterEvent);
         });
         rowSquare.appendChild(colSquare);
       }
