@@ -1,5 +1,5 @@
 body {
-  background-color: hsl(78 9.2% 81.3%);
+  background-color: hsl(82 9.2% 81.3%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,17 @@ h1 {
   display: flex;
   justify-content: center;
   font-size: 2.5rem;
+  margin-bottom: 0.2em;
+}
+
+button {
+  margin: 1.2em;
+  padding: 5px;
+  font-size: 1rem;
+  background-color: hsl(82 28% 82%);
+  border: solid black 2.5px;
+  border-radius: 8px;
+  font-weight: 550;
 }
 
 div.container {

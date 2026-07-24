@@ -1,28 +1,23 @@
 /* TODO:
  * - Set up a hover effect so the grid divs change colour when the mouse goes
  *   past them
- * - Add a button at the top that sends the user a popup asking for the number
- *   of squares per side for the new grid; oncd entered the existing grid will be
- *   removed and a new grid will be created in the same space (set a maximum of
- *   100)
- *   - have the colours be random color values for each square; plus darkening
+ * - have the colours be random color values for each square; plus darkening
  */
-
-// TODO:
-// - Fix margins: they work up until about 60, but then break down after that;
-// they also look a bit too spaced out when you get below 15
+let existing = false;
 
 /* Create Grid of Squares */
 const container = document.querySelector(".container");
 
+// XXX: This could probably be refactored into a couple of functions; 1 for
+// making the divs and one for styling them
 function createGrid(gridSquares, maximum = 100) {
-  if (gridSquares <= maximum) {
+  if (gridSquares <= maximum && existing === false) {
     for (let i = 0; i < gridSquares; i++) {
       const rowSquare = document.createElement("div");
       /* Modifying div attributes */
       rowSquare.style.height = "100%";
       rowSquare.style.width = "100%";
-      rowSquare.style.margin = `${30 / gridSquares}px`;
+      rowSquare.style.margin = `${3.2 / gridSquares}em`;
       rowSquare.className = "rowSquare";
       for (let j = 0; j < gridSquares; j++) {
         const colSquare = document.createElement("div");
@@ -30,14 +25,24 @@ function createGrid(gridSquares, maximum = 100) {
         /* Modifying div attributes */
         colSquare.style.width = "100%";
         colSquare.style.height = "100%";
-        colSquare.style.margin = `${30 / gridSquares}px`;
+        colSquare.style.margin = `${3.2 / gridSquares}em`;
         rowSquare.appendChild(colSquare);
       }
       container.appendChild(rowSquare);
+      existing = true;
     }
-  } else {
+  } else if (gridSquares > maximum) {
     alert(`Too many squares, please enter a number less than ${maximum}`);
+  } else {
+    // FIXME:
+    alert("I need to figure out how to clear the board");
   }
 }
 
-createGrid(15);
+/* Choose grid size and create grid */
+const btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+  // TODO: clear screen of pre-existing grids
+  let maximum = prompt("How many squares would you like?");
+  createGrid(maximum);
+});
