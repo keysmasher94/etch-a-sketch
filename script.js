@@ -1,8 +1,7 @@
-/* TODO:
- * - Set up a hover effect so the grid divs change colour when the mouse goes
- *   past them
- * - have the colours be random color values for each square; plus darkening
- */
+//  TODO:
+// - have the colours darken by 10% over each pass; look at 'opacity'
+
+// Global variable to see if a grid has been drawn
 let existing = false;
 
 /* Create Grid of Squares */
@@ -26,6 +25,9 @@ function createGrid(gridSquares, maximum = 100) {
         colSquare.style.width = "100%";
         colSquare.style.height = "100%";
         colSquare.style.margin = `${3.2 / gridSquares}em`;
+        colSquare.addEventListener("mouseenter", (e) => {
+          colSquare.style.backgroundColor = randomColor();
+        });
         rowSquare.appendChild(colSquare);
       }
       container.appendChild(rowSquare);
@@ -46,3 +48,11 @@ btn.addEventListener("click", () => {
   let maximum = prompt("How many squares would you like?");
   createGrid(maximum);
 });
+
+/* Set a random colour */
+function randomColor() {
+  const hue = Math.floor(Math.random() * 3600) / 10;
+  const saturation = Math.floor(Math.random() * 1000) / 10;
+  const light = Math.floor(Math.random() * 1000) / 10;
+  return `hsl(${hue} 100% 55.5%)`;
+}
